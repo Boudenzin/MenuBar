@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap");
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #cdcdcd;
+    color: #0c1410;
+    font-family: 'Raleway', sans-serif;
+}
+
+#menuToggle {
+    display: block;
+    position: relative;
+    top: 50px;
+    left: 50px;
+
+    z-index: 3;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#menuToggle a{
+    text-decoration: none;
+    color: #cdcdcd;
+    transition: color 0.3s ease;
+}
+
+#menuToggle a:hover{
+    color: #FFFFFF;
+}
+
+#menuToggle input{
+    display: block;
+    position: absolute;
+    z-index: 4;
+    width: 40px;
+    height: 32px;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
+    opacity: 0;
+    -webkit-touch-callout: none;
+
+}
+
+#menuToggle span {
+    display: block;
+    position: relative;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    z-index: 2;
+
+    background: #232323;
+    transform-origin: 4px 0px;
+
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child{
+    transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2){
+    transform-origin: 0% 100%;
+}
+
+/* Transformação para X */
+#menuToggle input:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: #cdcdcd; /* Cor clara quando o menu estiver ativado */
+    z-index: 3;
+}
+
+#menuToggle input:checked ~span:nth-last-child(3){
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2 0.2);
+}
+
+#menuToggle input:checked ~span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, -1px);
+}
+
+#menu{
+    position: fixed;
+    width: 300px;
+    height: 100vh;
+    margin: -100px 0 0 -50px;
+    padding: 50px;
+    padding-top: 125px;
+    
+    background: #232323;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li{
+    padding: 9px 0;
+    font-size: 20px;
+}
+
+#menuToggle input:checked ~ul{
+    transform: none;
+}
+
